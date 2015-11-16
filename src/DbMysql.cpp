@@ -209,8 +209,8 @@ const std::vector<const DbRow*>* DbMysql::get_rows(const char* name, const char*
 {
 	if(result_ == nullptr)
 		return nullptr;
-	std::vector<const DbRow*>& row = result_->get_rows(name, value);
-	return &row;
+	std::vector<const DbRow*>& rows = result_->get_rows(name, value);
+	return &rows;
 }
 
 // 取得所有的查询结果集
@@ -218,8 +218,8 @@ const std::vector<DbRow*>* DbMysql::get_rows()
 {
 	if(result_ == nullptr)
 		return nullptr;
-	const std::vector<DbRow*>& row = result_->get_rows();
-	return &row;
+	const std::vector<DbRow*>& rows = result_->get_rows();
+	return &rows;
 }
 
 //释放上次查询的结果，当查询完成后，必须调用该函数来释放

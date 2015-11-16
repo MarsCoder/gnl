@@ -17,6 +17,7 @@ class DbRows {
 public:
 	DbRows();
 	DbRows(MYSQL_RES *my_res);
+	DbRows(const DbRows* rows);
 	virtual ~DbRows();
 	//从查询的行记录集合中根据表字段名对应的字段值取出结果记录集合
 	std::vector<const DbRow*>& get_rows(const char* name, const char* value);
@@ -25,7 +26,9 @@ public:
 	//取得所有的查询结果集
 	std::vector<DbRow *> __get_rows() const;
 	//返回 数据表字段名
-	std::vector<const char*> get_name();
+	std::vector<const char*> get_name() const;
+	//设置数据表字段名
+	void set_name(std::vector<const char*>);
 	//从查询的行记录集合中根据索引下标取得对应的某行记录
 	const DbRow* operator[](unsigned int) const;
 	//

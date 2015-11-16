@@ -19,7 +19,7 @@
 #include "../head/BlockingQueue.h"
 
 //消息队列，网络层接收到的信息存放在这
-extern gnl::BlockingQueue<struct user_data> inputMessage;
+//extern gnl::BlockingQueue<struct user_data> inputMessage;
 
 namespace gnl {
 
@@ -172,7 +172,7 @@ void Socket::handle_connection()
 				if(msg.gpm.head.len == 0){
 					break;
 				}
-				inputMessage.push(msg);	//将消息放进阻塞队列
+				//inputMessage.push(msg);	//将消息放进阻塞队列
 			}
 		}
 	}

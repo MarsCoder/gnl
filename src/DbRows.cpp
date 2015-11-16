@@ -41,6 +41,12 @@ DbRows::DbRows(MYSQL_RES* res)//:my_res_(nullptr)
 
 }
 
+DbRows::DbRows(const DbRows* newRows)
+{
+	this->names_ = newRows->get_name();
+	this->rows_ = newRows->__get_rows();
+}
+
 DbRows::~DbRows() {
 	// TODO Auto-generated destructor stub
 	std::vector<DbRow*>::iterator it = rows_.begin();
@@ -96,9 +102,15 @@ std::vector<DbRow *> DbRows::__get_rows() const
 }
 
 //返回 数据表字段名
-std::vector<const char*> DbRows::get_name()
+std::vector<const char*> DbRows::get_name() const
 {
 	return names_;
+}
+
+//设置数据表字段名
+void DbRows::set_name(std::vector<const char*> names)
+{
+	names_ = names;
 }
 
 //从查询的行记录集合中根据索引下标取得对应的某行记录
